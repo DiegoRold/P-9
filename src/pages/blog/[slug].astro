@@ -1,0 +1,36 @@
+---
+import PostContent from "../../components/PostContent.astro";
+import CommentSection from "../../components/CommentSection.jsx";
+import { getPostBySlug, getAllSlugs } from "../../lib/article";
+
+// Captura el slug dinámico
+const { slug } = Astro.params;
+
+if (typeof slug !== "string") {
+  throw new Error("Slug must be a string");
+}
+
+// Obtén el post correspondiente al slug
+const post = await getPostBySlug(slug);
+
+if (!post) {
+  throw new Error(`No se encontró el artículo con slug: ${slug}`);
+}
+
+// Define getStaticPaths para las rutas dinámicas
+export async function getStaticPaths() {
+  const slugs = await getAllSlugs();
+  return slugs.map((slug) => ({ params: { slug } }));
+}
+---
+
+<PostContent
+  title={post.title}
+  description={post.description}
+  image={post.image}
+  price={post.price}
+  videoUrl={post.videoUrl}
+/>
+
+<!-- Renderizar el componente de comentarios en el cliente -->
+<CommentSection slug={slug} client:visible />

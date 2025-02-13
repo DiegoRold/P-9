@@ -1,0 +1,33 @@
+---
+// Recibimos las propiedades de 'slug' y 'title'
+const { slug, title } = Astro.props;
+let showThanksMessage = false;
+
+// Función para manejar la compra
+const handleCompra = () => {
+  showThanksMessage = true;
+};
+---
+
+<div>
+  <!-- Botón de comprar -->
+  <button
+    on:click={handleCompra}
+    class="px-6 py-3 bg-blue-500 text-white font-bold text-lg rounded-md hover:bg-blue-400 transition duration-200"
+  >
+    Comprar Ahora
+  </button>
+
+  <!-- Mostrar mensaje después de la compra -->
+  {showThanksMessage && (
+    <div class="mt-4 text-center text-green-500 font-bold">
+      <p>¡Gracias por comprar mi curso!</p>
+      <a
+        href={`/video/${slug}`}
+        class="text-blue-500 hover:text-blue-700 mt-4 block font-semibold"
+      >
+        Ver más (Video)
+      </a>
+    </div>
+  )}
+</div>

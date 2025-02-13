@@ -1,0 +1,37 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: 'Akira';
+  src: url('/Akira.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Akira2';
+  src: url('/Akira-2.ttf') format('truetype');
+  font-weight: 50;
+  font-style: normal;
+} 
+/* Para que el Scrol sea mas suave */
+html {
+  scroll-behavior: smooth;
+}
+
+@keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  
+  .animate-fadeIn {
+    animation: fadeIn 2s ease-in-out;
+  }
+  
+
+  

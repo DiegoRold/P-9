@@ -1,0 +1,32 @@
+---
+// layout.astro
+import Header from "../components/Header.astro";
+import Titulo from "../components/Titulo.astro";
+
+import Footer from "../components/Footer.astro";
+import Post from "../components/Post.astro";
+import SearchBar from "../components/SearchBar.jsx"; 
+import '../styles/global.css';
+---
+
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Tus Cursos de Cocina</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"> <!-- Para animar el título -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+  </head>
+  <body class="bg-gray-700">
+    
+   
+
+
+    <Header />
+    <Titulo />
+    
+    <main class="container mx-auto px-4 flex-1">
+      <Post />
+    </main>
+    <Footer />
+  </body>
+</html>

@@ -1,0 +1,124 @@
+---
+import "../styles/global.css";
+import Post from "./Post.astro";
+
+const { title, description, image, price, videoUrl} = Astro.props;
+console.log("Video URL:", videoUrl);
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <style>
+      body {
+        background-image: url("https://imgs.search.brave.com/UVlXkAfVZvmn-Gv1ujDwX5QQv0_uefbgBN_DbFHNDeo/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS5pc3RvY2twaG90/by5jb20vaWQvODg3/NjM2MDQyL2VzL2Zv/dG8vZWwtY29taWVu/em8tZGUtYWxnby1k/ZWxpY2lvc28uanBn/P3M9NjEyeDYxMiZ3/PTAmaz0yMCZjPWtz/bDBXdDJpYjh1eGd2/TERzZnJUaUR0cFdG/WWd1anhfUUhLQm5E/dlg4enM9");
+        background-size: cover; /* La imagen cubre toda el área del body */
+        background-position: center; /* Centra la imagen */
+        background-attachment: fixed; /* La imagen no se mueve al hacer scroll */
+      }
+    </style>
+  </head>
+
+  <body class=" bg-gray-700">
+    <div class="max-w-7xl mx-auto py-12 px-6">
+      <article
+        class=" bg-gray-700 shadow-xl rounded-lg overflow-hidden max-w-3xl mx-auto"
+      >
+        <header class="text-center px-6 py-8">
+          <h1 class="text-4xl font-serif text-white">{title}</h1>
+          <img
+            src={image}
+            alt={title}
+            class="mt-6 h-72 w-full object-cover rounded-lg shadow-md"
+          />
+          <p class="mt-6 text-lg text-white">{description}</p>
+
+          <!-- Detalles Precio -->
+          <div class="mt-6 flex justify-center gap-8">
+            <button
+              id="priceButton"
+              class="text-xl text-gray-600 font-serif bg-gradient-to-r from-white via-white to-white px-6 py-4 rounded-md font-medium shadow-xl transform hover:scale-105 transition-transform duration-300 ease-in-out"
+            >
+              Precio: {price} €
+            </button>
+          </div>
+        </header>
+
+        <!-- Modal para Confirmar la Compra -->
+        <div
+          id="confirmationModal"
+          class="fixed inset-0 flex items-center justify-center bg-gray-900 bg-opacity-50 hidden"
+        >
+          <div
+            class="bg-gray-700 p-8 rounded-lg shadow-lg text-center max-w-sm w-full"
+          >
+            <h2 class="text-2xl font-bold text-white mb-4">
+              Va a comprar este curso.
+              ¿Estás seguro?
+            </h2>
+            <div class="flex justify-around">
+              <button
+                id="confirmButton"
+                class="bg-green-500 text-gray-600 px-6 py-4 rounded-lg shadow-md"
+              >
+                Sí
+              </button>
+              <button
+                id="cancelButton"
+                class="bg-red-500 text-gray-600 px-6 py-4 rounded-lg shadow-md"
+              >
+                No
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Contenedor del Video -->
+        <div id="videoContainer" class="mt-8 hidden text-center">
+          <h3 class="text-xl font-serif text-white">Curso Comprado</h3>
+          <iframe
+            width="561"
+            height="315"
+            src={videoUrl}
+            title="YouTube video player"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen></iframe>
+           
+        </div>
+      </article>
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const modal = document.getElementById("confirmationModal");
+        const videoContainer = document.getElementById("videoContainer");
+        const confirmButton = document.getElementById("confirmButton");
+        const cancelButton = document.getElementById("cancelButton");
+        const priceButton = document.getElementById("priceButton");
+
+        function showConfirmation() {
+          if (modal) modal.classList.remove("hidden");
+        }
+
+        function closeModal() {
+          if (modal) modal.classList.add("hidden");
+        }
+
+        function showVideo() {
+          if (modal) modal.classList.add("hidden"); // Cerrar el modal
+          if (videoContainer) videoContainer.classList.remove("hidden"); // Mostrar el video
+        }
+
+        if (confirmButton) confirmButton.addEventListener("click", showVideo);
+        if (cancelButton) cancelButton.addEventListener("click", closeModal);
+        if (priceButton)
+          priceButton.addEventListener("click", showConfirmation);
+      });
+    </script>
+  </body>
+</html>

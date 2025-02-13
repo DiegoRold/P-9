@@ -1,0 +1,76 @@
+{
+  "posts": [
+    {
+      "id": 0,
+      "title": "Cocina Española",
+      "description": "Aprende a preparar platos tradicionales españoles como la paella, la tortilla de patatas y el gazpacho, utilizando recetas auténticas y técnicas sencillas.",
+      "price": 60,
+      "videoUrl": "https://www.youtube.com/ZmO0HqC8kJ8?si=DnDoYc8iW6MnytV2",
+      "image": "/espanola.jpg",
+      "slug": "cocina-espanola"
+    },
+    {
+      "id": 1,
+      "title": "Cocina Italiana",
+      "description": "Descubre el arte de la cocina italiana con recetas de pasta, pizza y postres tradicionales, aprendiendo técnicas perfeccionadas a lo largo de generaciones.",
+      "price": 60,
+      "videoUrl": "https://www.youtube.com/OjEIM0NEDt4?si=uYIDMnB2sBLLm7HB",
+      "image": "/italiana.jpg",
+      "slug": "cocina-italiana"
+    },
+    {
+      "id": 2,
+      "title": "Cocina Japonesa",
+      "description": "Sumérgete en la elegancia y precisión de la cocina japonesa, aprendiendo a preparar sushi, ramen y otros platos caracterizados por su frescura y presentación impecable.",
+      "price": 75,
+      "videoUrl": "https://www.youtube.com/watch?v=OKapgEoPGIM&pp=ygUVY3Vyc28gY29jaW5hIGphcG9uZXNh",
+      "image": "/japonesa.jpg",
+      "slug": "cocina-japonesa"
+    },
+    {
+      "id": 3,
+      "title": "Cocina Peruana",
+      "description": "Explora la rica y variada gastronomía peruana, famosa por la fusión de sabores, y aprende a preparar platos emblemáticos como el ceviche y el lomo saltado.",
+      "price": 55,
+      "videoUrl": "https://www.youtube.com/watch?v=RP34o3qQhEM&list=PLBkWapFE-rCe8juo1zAehXaXoItWxOaSf",
+      "image": "/peruana.jpg",
+      "slug": "cocina-peruana"
+    },
+    {
+      "id": 4,
+      "title": "Cocina Mexicana",
+      "description": "Descubre los vibrantes sabores de la cocina mexicana, dominando recetas de tacos, enchiladas, salsas picantes y guacamole, con ingredientes frescos y auténticos.",
+      "price": 55,
+      "videoUrl": "https://www.youtube.com/watch?v=T07sM87dz1s&list=PLg_EwpnFvUZ5-8-3hbAc6QT70NZc_XDqZ",
+      "image": "/mexicana.jpg",
+      "slug": "cocina-mexicana"
+    },
+    {
+      "id": 5,
+      "title": "Cocina Francesa",
+      "description": "Adéntrate en la sofisticación de la alta cocina francesa, aprendiendo técnicas culinarias refinadas y preparando platos emblemáticos que han marcado la gastronomía mundial.",
+      "price": 40,
+      "videoUrl": "https://www.youtube.com/watch?v=YocZx5DwEgo&pp=ygUPY29jaW5hIGZyYW5jZXNh",
+      "image": "/francesa.jpg",
+      "slug": "cocina-francesa"
+    },
+    {
+      "id": 6,
+      "title": "Cocina Alemana",
+      "description": "Aprende a cocinar platos tradicionales alemanes, desde salchichas y pretzels hasta guisos reconfortantes, explorando la rica herencia culinaria de Alemania.",
+      "price": 35,
+      "videoUrl": "https://www.youtube.com/watch?v=a8JJUxiDgg8&pp=ygUOY29jaW5hIGFsZW1hbmE%3D",
+      "image": "/alemana.jpg",
+      "slug": "cocina-alemana"
+    },
+    {
+      "id": 7,
+      "title": "Cocina Brasileña",
+      "description": "Sumérgete en la diversidad y energía de la cocina brasileña, aprendiendo a preparar platos tradicionales como la feijoada y la moqueca, llenos de sabor y tradición.",
+      "price": 35,
+      "videoUrl": "https://www.youtube.com/watch?v=ovNinNq_Jho&pp=ygURY29jaW5hIGJyYXNpbGXDsWE%3D",
+      "image": "/brasilena.jpg",
+      "slug": "cocina-brasilena"
+    }
+  ]
+}
