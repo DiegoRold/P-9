@@ -3,7 +3,9 @@ import Comprar from './Comprar.astro';
 
 const { title, description, image, slug } = Astro.props;
 ---
-
+<head>
+  <meta charset="UTF-8" />
+</head>
 <section id="CURSOS DE COCINA" class="text-slate-50 p-6 rounded-lg shadow-xl bg-gray-600">
   <!-- Título de la publicación -->
   <h2 class="text-2xl text-center text-slate-800 font-serif font-bold mb-4">{title}</h2>

@@ -1,11 +1,9 @@
 ---
 // layout.astro
 import Header from "../components/Header.astro";
-import Titulo from "../components/Titulo.astro";
-
+import Slider from "../components/Slider.jsx";
 import Footer from "../components/Footer.astro";
 import Post from "../components/Post.astro";
-import SearchBar from "../components/SearchBar.jsx"; 
 import '../styles/global.css';
 ---
 
@@ -13,17 +11,24 @@ import '../styles/global.css';
   <head>
     <meta charset="UTF-8" />
     <title>Tus Cursos de Cocina</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"> <!-- Para animar el título -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
   </head>
   <body class="bg-gray-700">
-    
-   
-
-
     <Header />
-    <Titulo />
-    
+
+    <!-- Texto Llamativo -->
+    <div class="text-center text-gray-900 py-8 bg-gray-700 mt-24">
+      <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 animate__animated animate__fadeInDown">
+        ¿Listo para Desatar tu Pasión por la Cocina?
+      </h1>
+      <p class="text-lg md:text-xl lg:text-2xl animate__animated animate__fadeInUp">
+        Descubre los Secretos de los Grandes Chefs.
+      </p>
+    </div>
+
+    <Slider client:load />
+
     <main class="container mx-auto px-4 flex-1">
       <Post />
     </main>

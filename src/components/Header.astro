@@ -1,33 +1,166 @@
 ---
- import SearchBar from "../components/SearchBar"
+import SearchBar from "../components/SearchBar";
+import Registro from "./Registro";  // Importa el componente Registro
 const links = [
-  { name: "Inicio", href: "/" },
-  { name: "Cursos", href: "#ultimasPublicaciones" },
-  { name: "Subscripcion", href: "" }, 
-  
 ];
+
+let usuarioLogueado = null;
+
+// Comprueba si hay una sesión activa
+if (typeof window !== 'undefined') {
+    const sesion = JSON.parse(localStorage.getItem('sesion'));
+    if (sesion) {
+        usuarioLogueado = sesion.usuario;
+    }
+}
+
+const handleLogin = (usuario) => {
+  usuarioLogueado = usuario;
+    if (typeof window !== 'undefined') {
+    // Actualiza el estado en el cliente.
+    const header = document.querySelector('header');
+    if(header) {
+      header.innerHTML = ''; // Limpia el header
+      Astro.response.redirect('/'); // Recarga la página
+    }
+  }
+};
+
 ---
 
-<header class="bg-gray-700 p-3 fixed top-0 left-0 w-full z-50">
-  <div class="container mx-auto flex justify-between items-center">
-    <img src="/logo-cocina.jpg" class="w-24 h-auto" />
+<head>
+  <meta charset="UTF-8" />
+</head>
 
-    <nav>
-      {/* Aumenta space-x-4 a space-x-8 para más separación */}
-      <ul class="flex space-x-8">
-        {links.map((link) => (
-          <li>
-            <a 
-              href={link.href} 
-              class="hover:underline text-slate-900 font-serif h-10"
-            >
-              {link.name}
-            </a>
-          </li>
-        ))}
-      </ul>
-    </nav>
-    
-    <SearchBar client:load />
+<header class="bg-slate-800 p-4 fixed top-0 left-0 w-full z-50 shadow-md">
+  <div class="container mx-auto flex items-center justify-between">
+    <a href="/" class="flex items-center">
+      <img src="/logo-cocina.jpg" alt="Logo Cocina" class="w-20 h-auto mr-4" />
+    </a>
+
+    <!-- Contenedor para el Título Centrado -->
+    <div class="flex-grow text-center">
+      <a href="/" class="text-slate-100 text-xl font-bold font-serif">
+        EL REY DE LAS COCINAS
+      </a>
+    </div>
+
+    <div class="flex items-center">
+      <nav class="hidden md:block">
+        <ul class="flex space-x-10">
+          {links.map((link) => (
+            <li>
+              <a
+                href={link.href}
+                class="text-slate-100 hover:text-amber-400 font-serif transition duration-300"
+              >
+                {link.name}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </nav>
+
+      {/* Componente Registro (con el icono) */}
+      <Registro client:load onLogin={handleLogin} />
+
+      <SearchBar client:load />
+
+      <!-- Icono de Cursos -->
+      <a href="#cursos-section" class="ml-4 md:ml-10 icon-link">
+        <img
+          src="/cursos.png"
+          alt="Cursos"
+          class="icon text-slate-100 hover:text-amber-400 transition duration-300 w-8 h-8"
+        />
+      </a>
+
+      <!-- Icono de Contacto -->
+      <a href="#contact-footer" class="ml-4 md:ml-10 icon-link">
+        <img
+          src="/contacto.png"
+          alt="Contacto"
+          class="icon text-slate-100 hover:text-amber-400 transition duration-300 w-8 h-8"
+        />
+      </a>
+
+      <!-- Menú hamburguesa (para pantallas pequeñas) -->
+      <button id="menu-toggle" class="md:hidden text-slate-100">
+        <svg
+          class="w-6 h-6"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M4 6h16M4 12h16m-7 6h7"
+          ></path>
+        </svg>
+      </button>
+    </div>
   </div>
+
+  <!-- Menú desplegable (para pantallas pequeñas) -->
+  <nav id="mobile-menu" class="hidden md:hidden bg-slate-700">
+    <ul class="flex flex-col space-y-4 p-4">
+      {links.map((link) => (
+        <li>
+          <a
+            href={link.href}
+            class="text-slate-100 hover:text-amber-400 font-serif block"
+          >
+            {link.name}
+          </a>
+        </li>
+      ))}
+      <li>
+        <a href="#cursos-section" class="text-slate-100 hover:text-amber-400 font-serif block">
+          Cursos
+        </a>
+      </li>
+      <li>
+        <a href="#contact-footer" class="text-slate-100 hover:text-amber-400 font-serif block">
+          Contacto
+        </a>
+      </li>
+    </ul>
+  </nav>
+    {usuarioLogueado && (
+    <div class="text-white ml-4">
+      Usuario: {usuarioLogueado}
+    </div>
+  )}
 </header>
+
+<script>
+  // JavaScript para el menú hamburguesa
+  const menuToggle = document.getElementById("menu-toggle");
+  const mobileMenu = document.getElementById("mobile-menu");
+
+  if (menuToggle && mobileMenu) {
+    menuToggle.addEventListener("click", () => {
+      mobileMenu.classList.toggle("hidden");
+    });
+  }
+
+    function resizeIcons() {
+    const searchBar = document.querySelector(".astro-vjpc5jdy"); //  Clase generada por Astro. ¡Podría cambiar!
+    if (searchBar) {
+      const searchBarHeight = searchBar.offsetHeight;
+      const icons = document.querySelectorAll(".icon-link .icon");
+      icons.forEach((icon) => {
+        icon.style.width = `${searchBarHeight}px`;
+        icon.style.height = `${searchBarHeight}px`;
+      });
+    }
+  }
+
+  // Llama a la función al cargar la página y al redimensionar
+  window.addEventListener("load", resizeIcons);
+  window.addEventListener("resize", resizeIcons);
+
+</script>

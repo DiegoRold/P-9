@@ -1,5 +1,38 @@
-<footer id="contact-footer" class="bg-gray-700 text-white py-6">
-  <div class="container mx-auto text-center">
-    <p>&copy; Autor de la web Diego Roldán</p>
+<footer id="contact-footer" class="bg-slate-800 py-12 text-slate-300">
+  <div class="container mx-auto px-4">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+      <!-- Lado Izquierdo -->
+      <div class="flex flex-col justify-between items-center">
+        <!-- Parte Superior (Teléfono) -->
+        <div class="flex items-center mb-4">
+          <img src="/telefono.png" alt="Teléfono" class="w-12 h-12 mr-4" />
+          <span class="text-center text-lg">900 255 985</span>
+        </div>
+        <!-- Parte Inferior (Móvil) -->
+        <div class="flex items-center">
+          <img src="/movil.png" alt="Móvil" class="w-12 h-12 mr-4" />
+          <span class="text-center text-lg">+34 698 542 113</span>
+        </div>
+      </div>
+
+      <!-- Lado Derecho -->
+      <div class="grid grid-cols-1 gap-4">
+        <!-- Cuadrícula Superior (Correo) -->
+        <div class="flex items-center justify-center">
+          <img src="/correo.png" alt="Correo" class="w-12 h-12 mr-4" />
+          <span class="text-center text-lg">soporte@elreydelascocinas.com</span>
+        </div>
+        <!-- Cuadrícula Inferior (Direccion) -->
+        <div class="flex items-center justify-center">
+          <img src="/direccion.png" alt="Direccion" class="w-12 h-12 mr-4" />
+          <span class="text-center text-lg">C/ Fuencarral, 87 Madrid, España</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Texto de Copyright -->
+    <div class="text-center text-sm mt-4">
+      &copy; {new Date().getFullYear()} EL REY DE LAS COCINAS. Todos los derechos reservados.
+    </div>
   </div>
 </footer> 

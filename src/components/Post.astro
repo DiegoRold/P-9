@@ -5,15 +5,19 @@ import PostContent from './PostContent.astro';
 
 const posts = await getPostData(); // Fetch posts data
 ---
-
+<head>
+  <meta charset="UTF-8" />
+</head>
 <!-- Main Content -->
 <div class="container mx-auto py-8 px-4 bg-stone-950  bg-gray-700">
-  
-  <!-- Título de las publicaciones -->
-  
 
-  <!-- Grid de publicaciones -->
-  <div class="grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-2 xl:grid-cols-2 gap-8">
+  <!-- Título de las publicaciones -->
+  <h1 class="text-4xl  text-center mb-8 text-gray-900 font-serif ">
+    Nuestros Cursos
+  </h1>
+
+  <!-- ID para el ancla -->
+  <div id="cursos-section" class="grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-2 xl:grid-cols-2 gap-8">
     <!-- Condicional para mostrar las publicaciones -->
     {posts.length > 0 ? (
       posts.map((post) => (
@@ -28,7 +32,7 @@ const posts = await getPostData(); // Fetch posts data
     ) : (
     <p class="text-center text-xl text-gray-300">No hay publicaciones disponibles.</p>
     )}
-    
+
   </div>
-  
+
 </div>
